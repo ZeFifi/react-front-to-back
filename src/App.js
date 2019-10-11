@@ -5,7 +5,7 @@ import Navbar from "./components/layout/Navbar";
 function App() {
   return (
     <div className="App">
-      <Navbar title="Github Finder" icon="fab fa-github" />
+      <Navbar icon="fab fa-github" />
     </div>
   );
 }
