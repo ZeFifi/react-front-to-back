@@ -17,9 +17,6 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
 
 UserItem.propTypes = {
     user: PropTypes.object.isRequired,
-    login: PropTypes.string.isRequired,
-    avatar_url: PropTypes.string.isRequired,
-    html_url: PropTypes.string.isRequired,
 };
 
 export default UserItem;

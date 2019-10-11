@@ -10,23 +10,23 @@ class App extends Component {
         super(props);
         this.state = {
             users: [],
-            loading: false
+            isLoading: false
         }
     }
 
     async componentDidMount() {
-        this.setState({ loading: true});
+        this.setState({ isLoading: true});
         const res = await axios.get("https://api.github.com/users");
-        this.setState({users: res.data, loading: true})
+        this.setState({users: res.data, isLoading: false})
     }
 
     render() {
-        const { loading, users } = this.state;
+        const { isLoading, users } = this.state;
         return (
         <div className="App">
           <Navbar icon="fab fa-github" />
             <div className="container">
-                <Users loading={loading} users={users} />
+                <Users loading={isLoading} users={users} />
             </div>
         </div>
       );
