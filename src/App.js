@@ -15,11 +15,11 @@ class App extends Component {
     }
   }
 
-  async componentDidMount() {
-    this.setState({ isLoading: true});
-    const res = await axios.get("https://api.github.com/users");
-    this.setState({users: res.data, isLoading: false})
-  }
+  searchUsers = async (text) => {
+    this.setState({ isLoading: true });
+    const res = await axios.get(`https://api.github.com/search/users?q=${text}`);
+    this.setState({users: res.data.items, isLoading: false});
+  };
 
   render() {
     const { isLoading, users } = this.state;
@@ -27,13 +27,12 @@ class App extends Component {
       <div className="App">
         <Navbar icon="fab fa-github" />
         <div className="container">
-          <Search/>
+          <Search searchUsers={this.searchUsers}/>
           <Users loading={isLoading} users={users} />
         </div>
       </div>
     );
   }
-
 }
 
 export default App;
